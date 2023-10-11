@@ -10,10 +10,11 @@ class Visitor(models.Model):
     photo=models.ImageField(upload_to="photos/")
 
 class Destination(models.Model):
-    name = models.CharField(max_length=255)
-
+    name = models.CharField(max_length=100)
+    location =models.CharField(max_length=100)
 class Visit(models.Model):
     visitor = models.ForeignKey(Visitor, on_delete=models.CASCADE)
     destination = models.ForeignKey(Destination, on_delete=models.CASCADE)
     purpose_of_visit = models.TextField()
-    date_visited = models.DateTimeField(auto_now_add=True)
+    time_visited = models.DateTimeField(auto_now_add=True)
+    time_departed = models.DateTimeField(auto_now_add=True)
